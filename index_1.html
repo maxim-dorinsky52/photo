@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="porno.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                 <a href="./porno.html">Главная страница</a>
+                 <a href="./porno1.html">прайс-лист</a>
+                 <a href="./porno2.html">Наши работы</a>
+                 <a href="./porno3.html">О нас</a>
+                 <a href="./porno4.html">Связь с нами</a>
+            </ul> 
+        </nav>
+    </header>
+    <main class="carousel-container">
+        <div class="carousel">
+          <div class="item active">
+            <img src="./image/photo_2024-08-10_16-43-56 (2).jpg" alt="Image 1"/>
+            <p class="caption"></p>
+          </div>
+          <div class="item">
+            <img src="./image/photo_2024-08-10_16-43-56 (3).jpg" alt="Image 2" />
+            <p class="caption"></p>
+          </div>
+          <div class="item">
+            <img src="./image/photo_2024-08-10_16-43-56.jpg" alt="Image 3" />
+            <p class="caption"></p>
+          </div>
+        </div>
+        <button class="btn prev">back</button>
+        <button class="btn next">next</button>
+        <div class="dots"></div>
+      </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  let carousel = document.querySelector(".carousel");
+  let items = carousel.querySelectorAll(".item");
+  let dotsContainer = document.querySelector(".dots");
+
+  
+  items.forEach((_, index) => {
+    let dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.dataset.index = index;
+    dotsContainer.appendChild(dot);
+  });
+
+  let dots = document.querySelectorAll(".dot");
+
+  
+  function showItem(index) {
+    items.forEach((item, idx) => {
+      item.classList.remove("active");
+      dots[idx].classList.remove("active");
+      if (idx === index) {
+        item.classList.add("active");
+        dots[idx].classList.add("active");
+      }
+    });
+  }
+
+  // Event listeners for buttons
+  document.querySelector(".prev").addEventListener("click", () => {
+    let index = [...items].findIndex((item) =>
+      item.classList.contains("active")
+    );
+    showItem((index - 1 + items.length) % items.length);
+  });
+
+  document.querySelector(".next").addEventListener("click", () => {
+    let index = [...items].findIndex((item) =>
+      item.classList.contains("active")
+    );
+    showItem((index + 1) % items.length);
+  });
+
+  // Event listeners for dots
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      let index = parseInt(dot.dataset.index);
+      showItem(index);
+    });
+  });
+});
+    </script>
+    <div id="footer">
+     <div class="all-symbols">
+      <a href="https://t.me/tsmpictures">
+       <img src= "image/i (1).webp" class="symbol" alt="telegram icon"></a>
+      <a href="https://vk.com/club226001412">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25684.png" class="symbol" alt="VK icon"></a>
+    </div>
+  </div>
+</body>
+</html>
